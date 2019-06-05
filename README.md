@@ -51,6 +51,28 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+### How to use
+
+Instead of using modeltranslation `translator.register`, you should use `modeltranslation_lokalise.register_translation`:
+
+```python
+from modeltranslation.translator import TranslationOptions
+from modeltranslation_lokalise.signals import register_translation
+
+from your_app.models import Model1
+
+
+class Model1TranslationOptions(TranslationOptions):
+    fields = ('name', 'description',)
+
+
+register_translation(Model1, Model1TranslationOptions)
+```
+
+And that's all, `modeltranslations-lokalise` will keep track of changes on your translatable models and import them in your
+lokalise project each time you update one of your translatable fields.
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
