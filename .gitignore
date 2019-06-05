@@ -1,0 +1,44 @@
+*.py[cod]
+.*
+!.babelrc
+!.circleci
+!.codeclimate.yml
+!.coveragerc
+!.dockerignore
+!.eslintrc.json
+!.flowconfig
+!.gqlconfig
+!.github
+!.gitignore
+!.nvmrc
+!.npmrc
+!.pylintrc
+!.travis*
+!.tx
+*.css
+*.log
+*.pot
+*.pyc
+local_settings.py
+__pycache__/
+build/
+coverage/
+dist/
+*\.egg*
+# data
+/docs/_build/
+/media/
+/node_modules/
+/static/
+webpack-bundle.json
+/templates/templated_email/compiled/*
+!/templates/templated_email/compiled/.gitkeep
+
+# Project ENV
+ENV
+.env
+
+# Migrations
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
