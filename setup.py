@@ -3,10 +3,9 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-# This call to setup() does all the work
 setup(
     name="modeltranslation-lokalise",
-    version="0.1.0",
+    version="0.1.1",
     description="Integrate django-modeltranslation with lokalise.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -25,5 +24,6 @@ setup(
     ],
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["django", "django-modeltranslation"],
+    install_requires=["django", "django-modeltranslation",
+                      "djangorestframework", "requests"],
 )

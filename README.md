@@ -15,11 +15,11 @@ so make sure you include it in your `INSTALLED_APPS` setting before `modeltransl
 
 ```python
 INSTALLED_APPS = [
-    '...',
+    ...
     'django.contrib.contenttypes',
-    '...',
+    ...
     'modeltranslation_lokalise',
-    '...',
+    ...
 ]
 ```
 
