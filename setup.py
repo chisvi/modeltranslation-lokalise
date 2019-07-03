@@ -10,7 +10,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/chisvi/modeltranslation-lokalise",
-    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.1.tar.gz",
+    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.3.tar.gz",
     keywords=['Django', 'django-modeltranslation', 'translation', 'lokalise'],
     author="Sergi Chisvert",
     author_email="chisvi@gmail.com",
