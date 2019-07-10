@@ -73,6 +73,19 @@ And that's all, `modeltranslations-lokalise` will keep track of changes on your 
 lokalise project each time you update one of your translatable fields.
 
 
+#### Non-lokalise translatable fields
+
+It's possible that you want certain fields to be translatable in terms of modeltranslations but exclude them from being 
+uploaded to Lokalise. In that case you can add an attribute `non_lokalise_fields` to your TranslationOptions object. 
+Modeltranslation-lokalise will not track changes on that fields.
+
+```python
+class ProductTranslationOptions(TranslationOptions):
+    non_lokalise_fields = ('slug', )
+    fields = ('title', 'description', ) + non_lokalise_fields
+```
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

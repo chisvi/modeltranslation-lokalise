@@ -38,6 +38,14 @@ def register_translation(model_class, trans_opts_class):
                         weak=False)
 
 
+def get_lokalise_fields(trans_opts_class):
+    non_lokalise_fields = getattr(trans_opts_class, 'non_lokalise_fields',
+                                  tuple)
+    lokalise_fields = (t for t in trans_opts_class.fields if
+                       t not in non_lokalise_fields)
+    return lokalise_fields
+
+
 def note_down_translatable_fields(sender, instance, **kwargs):
     """
     Note down the translatable fields that have been modified on the
@@ -49,14 +57,15 @@ def note_down_translatable_fields(sender, instance, **kwargs):
     translatable fields of the model.
     """
     instance.updated_trans_fields = []
-    translatable_fields = kwargs.get('trans_opts_class').fields
+    trans_opts_class = kwargs.get('trans_opts_class')
+    lokalise_fields = get_lokalise_fields(trans_opts_class)
     try:
         db_instance = sender.objects.get(pk=instance.pk)
     except sender.DoesNotExist:
-        instance.updated_trans_fields = translatable_fields
+        instance.updated_trans_fields = lokalise_fields
         return
 
-    for parent_field in translatable_fields:
+    for parent_field in lokalise_fields:
         trans_fields = get_translation_fields(parent_field)
         for field in trans_fields:
             if getattr(db_instance, field) != getattr(instance, field):
@@ -75,10 +84,9 @@ def notify_changes_lokalise(**kwargs):
         # Instance has no translatable fields modified
         return
 
-    create_or_update_translations(
-        list(kwargs.get('trans_opts_class').fields),
-        instance,
-    )
+    lokalise_fields = get_lokalise_fields(kwargs.get('trans_opts_class'))
+
+    create_or_update_translations(list(lokalise_fields), instance)
 
 
 def remove_lokalise_keys(**kwargs):
