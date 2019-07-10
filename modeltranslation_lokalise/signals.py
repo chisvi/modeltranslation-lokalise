@@ -41,8 +41,8 @@ def register_translation(model_class, trans_opts_class):
 def get_lokalise_fields(trans_opts_class):
     non_lokalise_fields = getattr(trans_opts_class, 'non_lokalise_fields',
                                   tuple)
-    lokalise_fields = (t for t in trans_opts_class.fields if
-                       t not in non_lokalise_fields)
+    lokalise_fields = tuple(t for t in trans_opts_class.fields if
+                            t not in non_lokalise_fields)
     return lokalise_fields
 
 
