@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 setup(
     name="modeltranslation-lokalise",
-    version="0.1.4",
+    version="0.1.5",
     description="Integrate django-modeltranslation with lokalise.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/chisvi/modeltranslation-lokalise",
-    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.4.tar.gz",
+    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.5.tar.gz",
     keywords=['Django', 'django-modeltranslation', 'translation', 'lokalise'],
     author="Sergi Chisvert",
     author_email="chisvi@gmail.com",
