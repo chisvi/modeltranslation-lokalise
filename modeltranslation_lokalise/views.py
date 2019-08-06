@@ -12,6 +12,7 @@ class TranslationWebhookView(GenericAPIView):
     http_method_names = ['post']
     serializer_class = TranslationUpdateSerializer
     permission_classes = (WhitelistIPPermission,)
+    authentication_classes = []
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
