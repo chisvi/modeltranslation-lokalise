@@ -1,5 +1,6 @@
 from django.conf import settings
 from rest_framework import permissions
+from ipware import get_client_ip
 
 
 class WhitelistIPPermission(permissions.BasePermission):
@@ -10,7 +11,7 @@ class WhitelistIPPermission(permissions.BasePermission):
                                '94.130.129.237']
 
     def has_permission(self, request, view):
-        ip_addr = request.META['REMOTE_ADDR']
+        ip_addr, _ = get_client_ip(request)
 
         whitelisted_ips = getattr(settings, 'LOKALISE_IP_ADDRESSES',
                                   self.DEFAULT_WHITELISTED_IPS)

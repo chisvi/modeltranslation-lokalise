@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 setup(
     name="modeltranslation-lokalise",
-    version="0.1.7",
+    version="0.1.8",
     description="Integrate django-modeltranslation with lokalise.co",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/chisvi/modeltranslation-lokalise",
-    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.7.tar.gz",
+    download_url="https://github.com/chisvi/modeltranslation-lokalise/archive/0.1.8.tar.gz",
     keywords=['Django', 'django-modeltranslation', 'translation', 'lokalise'],
     author="Sergi Chisvert",
     author_email="chisvi@gmail.com",
@@ -25,5 +25,6 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=["django", "django-modeltranslation",
-                      "djangorestframework", "requests"],
+                      "djangorestframework", "requests",
+                      "django-ipware"],
 )
