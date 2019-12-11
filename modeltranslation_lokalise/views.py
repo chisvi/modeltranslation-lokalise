@@ -17,15 +17,15 @@ class TranslationWebhookView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        if self.update_translation(serializer.data['data']):
+        if self.update_translation(serializer.data):
             return Response(serializer.data, status=HTTP_200_OK)
         else:
             return Response(status=HTTP_400_BAD_REQUEST)
 
     def update_translation(self, data):
-        lang_code = data['lang']['iso']
+        lang_code = data['language']['iso']
         translation_key = data['key']['id']
-        translation = data['translation']
+        translation = data['translation']['value']
 
         try:
             t_obj = LokaliseTranslation.objects.get(
