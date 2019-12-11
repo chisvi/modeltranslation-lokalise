@@ -3,6 +3,7 @@
 Integrate [django-modeltranslation](https://github.com/deschler/django-modeltranslation) with [lokalise.co](https://lokalise.co).
 It will let your project upload translatable fields of your model into lokalise.io using it's [API](https://lokalise.co/api2docs/python/) and
 also update your local translations when someone updates them on lokalise. 
+Currently suppors `Lokalise-api v2` (thanks to  **[@ddomenech](https://github.com/ddomenech)**).
 
 ### Installing
 
