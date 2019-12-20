@@ -13,7 +13,7 @@ class TranslationProjectSerializer(serializers.Serializer):
 
 class TranslationKeySerializer(serializers.Serializer):
     id = serializers.IntegerField(required=True)
-    key = serializers.CharField(required=True)
+    name = serializers.CharField(required=True)
 
     def validate_id(self, value):
         try:
@@ -39,7 +39,7 @@ class TranslationSerializer(serializers.Serializer):
 
 
 class TranslationUpdateSerializer(serializers.Serializer):
-    event = serializers.ChoiceField(choices=['translation.updated'],
+    event = serializers.ChoiceField(choices=['project.translation.updated'],
                                     required=True)
     translation = TranslationSerializer(required=True)
     language = TranslationLangSerializer(required=True)
