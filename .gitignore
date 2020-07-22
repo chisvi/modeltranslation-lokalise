@@ -37,8 +37,3 @@ webpack-bundle.json
 # Project ENV
 ENV
 .env
-
-# Migrations
-**/migrations/**
-!**/migrations
-!**/migrations/__init__.py

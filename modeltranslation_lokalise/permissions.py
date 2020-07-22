@@ -15,5 +15,20 @@ class WhitelistIPPermission(permissions.BasePermission):
 
         whitelisted_ips = getattr(settings, 'LOKALISE_IP_ADDRESSES',
                                   self.DEFAULT_WHITELISTED_IPS)
-
+        if whitelisted_ips == '*':
+            return True
         return ip_addr in whitelisted_ips
+
+
+class LokalisePermission(permissions.BasePermission):
+    """
+    Permission check for secret header.
+    """
+    def has_permission(self, request, view):
+        x_secret = request.META.get('HTTP_X_SECRET', None)
+
+        if not x_secret:
+            return False
+
+        valid_secret = settings.LOKALISE_WEBHOOK_X_SECRET
+        return x_secret == valid_secret

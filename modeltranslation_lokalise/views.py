@@ -4,17 +4,20 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
 from .models import LokaliseTranslation
-from .permissions import WhitelistIPPermission
+from .permissions import WhitelistIPPermission, LokalisePermission
 from .serializers import TranslationUpdateSerializer
 
 
 class TranslationWebhookView(GenericAPIView):
     http_method_names = ['post']
     serializer_class = TranslationUpdateSerializer
-    permission_classes = (WhitelistIPPermission,)
+    permission_classes = (WhitelistIPPermission, LokalisePermission)
     authentication_classes = []
 
     def post(self, request, *args, **kwargs):
+        if request.data == ['ping']:
+            return Response(status=HTTP_200_OK)
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         if self.update_translation(serializer.data):
